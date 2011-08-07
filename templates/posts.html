@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block page_name %}Posts{% endblock %}
+
+{% block content %}
+      {% for post in posts %}
+       <article class="post">
+         <header>
+           <h2>{{post.title}}</h2>
+           <p>Posted by {{post.author}} on
+             <time datetime="2011-08-07T15:53:23-07:00">2011-08-07</time>
+           </p>
+         </header>
+         <p>
+          {{post.body}}
+         </p>
+         <footer>
+          <p><a href="comments"><i>25 Comments</i></a></p>
+         </footer>
+       </article>
+      {% endfor %}
+{% endblock %}

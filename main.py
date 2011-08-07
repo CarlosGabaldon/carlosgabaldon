@@ -14,13 +14,37 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+import os
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util
+from google.appengine.ext.webapp import template
 
 
-class MainHandler(webapp.RequestHandler):
+class Post(object):
+    """Post"""
+    def __init__(self, title, body, author="anonymous"):
+        self.title = title
+        self.body = body
+        self.author = author
+
+class Handler(webapp.RequestHandler):
+  
+    def render(self, template_name, response=None):
+
+        if response is None:
+            response = {}
+
+        path = os.path.join(os.path.dirname(__file__), template_name)
+        self.response.out.write(template.render(path, response))
+
+class MainHandler(Handler):
     def get(self):
-        self.response.out.write('Carlos Gabaldon')
+        posts = [Post(title ="Html 5 Rocks", body="I love it..", author="Carlos"),
+                 Post(title ="CSS3 and you", body="How to start.."),
+                 Post(title ="JavaScript Today", body="Modern JavaScript is ..")]
+        
+        response = dict(posts=posts)
+        self.render(template_name='templates/posts.html', response=response)
 
 
 def main():
