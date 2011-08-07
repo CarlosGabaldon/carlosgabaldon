@@ -1,1 +1,9 @@
 MY SHIT...
+
+Links
+
+Local web server: dev_appserver.py ~/projects/carlosgbaldon/
+Clear Datastore:  dev_appserver.py -c  ~/projects/carlosgabaldon/
+
+
+Deploying: appcfg.py update ~/projects/carlosgabaldon/
