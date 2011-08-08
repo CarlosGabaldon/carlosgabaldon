@@ -6,13 +6,20 @@
       {% for post in posts %}
        <article class="post">
          <header>
-           <h2>{{post.title}}</h2>
-           <p>Posted by {{post.author}} on
+           <h2>{{post.title|escape}}</h2>
+           <p>Posted by {{post.author|escape}} on
              <time datetime="2011-08-07T15:53:23-07:00">2011-08-07</time>
            </p>
          </header>
+         {% ifnotequal post.ancillary_content None %}
+         <aside>
+          <p>
+            {{post.ancillary_content|escape}}
+          </p>
+         </aside>
+         {% endifnotequal %}
          <p>
-          {{post.body}}
+          {{post.content|escape}}
          </p>
          <footer>
           <p><a href="comments"><i>25 Comments</i></a></p>

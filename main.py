@@ -22,9 +22,10 @@ from google.appengine.ext.webapp import template
 
 class Post(object):
     """Post"""
-    def __init__(self, title, body, author="anonymous"):
+    def __init__(self, title, content, ancillary_content = None, author="anonymous"):
         self.title = title
-        self.body = body
+        self.content = content
+        self.ancillary_content = ancillary_content
         self.author = author
 
 class Handler(webapp.RequestHandler):
@@ -39,9 +40,14 @@ class Handler(webapp.RequestHandler):
 
 class MainHandler(Handler):
     def get(self):
-        posts = [Post(title ="Html 5 Rocks", body="I love it..", author="Carlos"),
-                 Post(title ="CSS3 and you", body="How to start.."),
-                 Post(title ="JavaScript Today", body="Modern JavaScript is ..")]
+        posts = [Post(title ="Html 5 Rocks", 
+                      content="I love it..", 
+                      author="Carlos"),
+                 Post(title ="CSS3 and you", 
+                      content="How to start..",
+                      ancillary_content="CSS is Magic!"),
+                 Post(title ="JavaScript Today", 
+                      content="Modern JavaScript is ..")]
         
         response = dict(posts=posts)
         self.render(template_name='templates/posts.html', response=response)
