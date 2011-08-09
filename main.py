@@ -18,15 +18,21 @@ import os
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util
 from google.appengine.ext.webapp import template
+from datetime import datetime
 
 
 class Post(object):
     """Post"""
-    def __init__(self, title, content, ancillary_content = None, author="anonymous"):
+    def __init__(self, title, content, 
+                 ancillary_content = None, author="anonymous", posted_on = datetime.now()):
         self.title = title
         self.content = content
         self.ancillary_content = ancillary_content
         self.author = author
+        self.posted_on = posted_on
+        
+    def posted_on_friendly(self):
+        return self.posted_on.strftime('%m/%d/%Y')
 
 class Handler(webapp.RequestHandler):
   
@@ -48,6 +54,7 @@ class MainHandler(Handler):
                       ancillary_content="CSS is Magic!"),
                  Post(title ="JavaScript Today", 
                       content="Modern JavaScript is ..")]
+                      
         
         response = dict(posts=posts)
         self.render(template_name='templates/posts.html', response=response)

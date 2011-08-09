@@ -8,7 +8,7 @@
          <header>
            <h2>{{post.title|escape}}</h2>
            <p>Posted by {{post.author|escape}} on
-             <time datetime="2011-08-07T15:53:23-07:00">2011-08-07</time>
+             <time datetime="{{post.posted_on}}">{{post.posted_on_friendly}}</time>
            </p>
          </header>
          {% ifnotequal post.ancillary_content None %}
