@@ -1,0 +1,16 @@
+/* Center the page content & basic font style's */
+body{
+  width: 960px;
+  margin: 15px auto;
+  font-family: Arial, "MS Trebuchet", sans-serif;
+}
+
+p{
+  margin: 0 0 20px 0;
+}
+
+p, li{
+  line-height: 20px;
+}
+
+/* Header */
