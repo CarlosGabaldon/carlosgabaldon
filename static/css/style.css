@@ -1,4 +1,7 @@
 /* Center the page content & basic font style's */
+/*
+ Select body element
+*/
 body{
   width: 960px;
   margin: 15px auto;
@@ -14,11 +17,84 @@ p, li{
 }
 
 /* Header */
+/*
+  Select any <header> element whose
+  id is 'page_header'
+*/
 header#page_header{
   width:100%;
 }
 
+
+
+
+
+/* practice */
+
+/*
+  Select any <a> element
+  whose href attribute value contains
+  the exact string "/" that is 
+  a descendant of an <nav> element that is
+  a descendant of an <header> element whose
+  id is 'page_header'.
+*/
+header#page_header nav a[href="/"] {
+  color: red;
+}
+
+/*
+  Select any <a> element
+  whose href attribute value contains 
+  the exact string "terms.html" that is
+  a descendant of an <nav> element that is 
+  a descendant of an <footer> elment whose
+  id is 'page_footer'.
+
+*/
+footer#page_footer nav a[href="terms.html"]{
+  font-family: helvetica;
+  font-size: 20px;
+  color: green;
+}
+
+/* 
+   Select any <a> element 
+   whose href attribute value contains 
+   the substring "2010" that is 
+   a descendant of an <nav> element that is 
+   a descendant of an <section> element whose 
+   id is 'sidebar'. 
+*/
+section#sidebar nav a[href*="2010"]{
+  color: gray;
+  
+}
+
+/* 
+  Select any <article> element
+  that is a child of <section> element whose
+  id is 'posts'
+*/
+section#posts > article h2 {
+  color: red;
+}
+
+
+
+
+
 /* Navigation */
+/*
+  Select any <ul> element
+  within a <nav> element that is 
+  a descendant of an <header> element whose
+  id is 'page_header',
+  Select any <ul> element
+  within a <nav> element that is
+  a descendant of a element whose 
+  id is 'page_footer'.
+*/
 header#page_header nav ul, #page_footer nav ul{
   list-style: none;
   margin: 0;
